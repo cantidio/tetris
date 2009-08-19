@@ -1,7 +1,12 @@
 #include "../include/brick_empty.hpp"
-#include "gorgon++/src/graphic/include/gorgon_video.hpp"
+#include <gorgon++/include/graphic/gorgon_video.hpp>
+
 namespace Tetris
 {
+	BrickEmpty::BrickEmpty() : Brick(false)
+	{
+	}
+
 	void BrickEmpty::draw(const Gorgon::Point& pPosition) const
 	{
 		Gorgon::Video::get().drawRectangle
@@ -13,8 +18,6 @@ namespace Tetris
 		);
 	}
 
-	bool BrickEmpty::colide(const Board& pBoard) const
-	{
-		return false;
-	}
+	void BrickEmpty::drawShadow(const Gorgon::Point& pPosition) const
+	{}
 }

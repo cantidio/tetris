@@ -1,15 +1,17 @@
 #ifndef _BRICK_COLORED_
 #define _BRICK_COLORED_
 #include "brick.hpp"
-#include "gorgon++/src/graphic/include/gorgon_color.hpp"
+#include <gorgon++/include/graphic/gorgon_color.hpp>
 
 namespace Tetris
 {
 	/**
 	 * Classe de tijolo
-	 * 
+	 *
 	 * @author	Cantídio Oliveira Fontes
-	 */ 
+	 * @since	13/08/2009
+	 * @version	17/08/2009
+	 */
 	class BrickColored : public Brick
 	{
 		private:
@@ -20,7 +22,7 @@ namespace Tetris
 		public:
 			/**
 			 * Método Construtor
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
@@ -29,7 +31,7 @@ namespace Tetris
 			BrickColored(const Gorgon::Color& pColor);
 			/**
 			 * Método para desenhar o tijolo
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
@@ -37,13 +39,14 @@ namespace Tetris
 			 */
 			virtual void draw(const Gorgon::Point& pPosition) const;
 			/**
-			 * Método que retornar quando houve uma colisão no tijolo
+			 * Método para desenhar a sombra do tijolo
 			 *
-			 * @author	Cantídio Oliveira Fontes
-			 * @since	13/09/2009
-			 * @version	13/09/2009
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	17/08/2009
+			 * @version	17/08/2009
+			 * @param	const Gorgon::Point& pPosition, posição a desenhar
 			 */
-			virtual bool colide(const Board& pBoard) const;
+			virtual void drawShadow(const Gorgon::Point& pPosition) const;
 	};
 }
 #endif

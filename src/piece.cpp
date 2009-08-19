@@ -1,27 +1,23 @@
-#include "../include/piece.hpp"
 #include <allegro.h>
+#include <gorgon++/include/core/gorgon_log.hpp>
+#include "../include/board.hpp"
+#include "../include/piece.hpp"
 
 namespace Tetris
 {
-
 	Piece::~Piece()
 	{
 		for(int i = 0; i < mBricks.size(); ++i)
 		{
-			delete mBricks[i];
+			if(mBricks[i])
+			{
+				delete mBricks[i];
+			}
 		}
 		mBricks.clear();
 		mBricksPosition.clear();
 	}
-	/**
-	 * Método para se adicionar um tijolo à peça
-	 *
-	 * @author	Cantidio Oliveira Fontes
-	 * @since	13/08/2009
-	 * @version	13/08/2009
-	 * @param	const Brick& pBrick				, tijolo a ser adicionado à peça
-	 * @param	const Gorgon::Point& pPosition	, posição do tijolo
-	 */
+
 	void Piece::appendBrick(Brick* pBrick,const Gorgon::Point& pPosition)
 	{
 		mBricks.push_back(pBrick);
@@ -33,59 +29,42 @@ namespace Tetris
 		return mPosition;
 	}
 
-	/**
-	 * Método para rotacionar a peça
-	 *
-	 * @author	Cantidio Oliveira Fontes
-	 * @since	13/08/2009
-	 * @version	13/08/2009
-	 */
-	void Piece::rotate()
+	int Piece::getBrickNumber() const
+	{
+		return mBricks.size();
+	}
+
+	void Piece::setPosition(const Gorgon::Point& pPosition)
+	{
+		mPosition = pPosition;
+	}
+
+	void Piece::rotateLeft()
 	{
 		const int size = mBricks.size();
 		double temp = 0;
-		for(int i = 0; i < size; i++)
+
+		for(int i = 0; i < size; ++i)
+		{
+			temp = mBricksPosition[i].getY();
+			mBricksPosition[i].setY( size - 1 - mBricksPosition[i].getX() );
+			mBricksPosition[i].setX( temp );
+		}
+	}
+
+	void Piece::rotateRight()
+	{
+		const int size = mBricks.size();
+		double temp = 0;
+
+		for(int i = 0; i < size; ++i)
 		{
 			temp = mBricksPosition[i].getX();
 			mBricksPosition[i].setX( size - 1 - mBricksPosition[i].getY() );
 			mBricksPosition[i].setY( temp );
 		}
 	}
-	/**
-	 * Método que representa o input da peça
-	 *
-	 * @author	Cantidio Oliveira Fontes
-	 * @since	13/08/2009
-	 * @version	13/08/2009
-	 * @todo	verificar as colisões antes de mover a peça, olhar os casos de UP e DOWN
-	 */
-	void Piece::control()
-	{
-		if(key[KEY_SPACE])
-		{
-			rotate();
-		}
-		else if(key[KEY_UP])
-		{
-		}
-		else if(key[KEY_DOWN])
-		{
-			move(Gorgon::Point(0,1));
-		}
-		else if(key[KEY_LEFT])
-		{
-			move(Gorgon::Point(-1,0));
-		}
-		else if(key[KEY_RIGHT])
-		{
-			move(Gorgon::Point(1,0));
-		}
-		key[KEY_SPACE]	= 0;
-		key[KEY_UP]		= 0;
-		key[KEY_DOWN]	= 0;
-		key[KEY_LEFT]	= 0;
-		key[KEY_RIGHT]	= 0;
-	}
+
 	/**
 	 * Método que retorna verdadeiro se a peça colidiu
 	 *
@@ -95,13 +74,23 @@ namespace Tetris
 	 * @return	bool
 	 * @todo	implementar
 	 */
-	bool Piece::colide()
+	bool Piece::colide(const Board& pBoard)
 	{
-		/*for(int i = 0; i < mBricksPosition.size(); ++i)
+		for(int i = 0; i < mBricksPosition.size(); ++i)
 		{
-			if(pBoard.colide()
-			if(mBricksPosition[i]
-		}*/
+			Gorgon::Point temp = mPosition + mBricksPosition[i];
+			//printf("posicao do brick: %f %f\n",temp.getX(),temp.getY());
+			if
+			(
+				temp.getX()		< 0
+				|| temp.getX()	>= Board::getWidth()
+				|| temp.getY()	>= Board::getHeight()
+				|| pBoard.getBrick(temp).isCollisional()
+			)
+			{
+				return true;
+			}
+		}
 		return false;
 	}
 	/**
@@ -114,7 +103,7 @@ namespace Tetris
 	 */
 	void Piece::move(const Gorgon::Point& pPoint)
 	{
-		mPosition += pPoint * Brick::getSize() + pPoint;
+		mPosition += pPoint/* * Brick::getSize() + pPoint;*/;
 	}
 	/**
 	 * Método para desenhar a Peça
@@ -123,16 +112,50 @@ namespace Tetris
 	 * @since	13/08/2009
 	 * @version	13/08/2009
 	 */
-	void Piece::draw()
+	void Piece::draw(const Board& pBoard)
 	{
 		for(int i = 0; i < mBricks.size(); ++i)
 		{
 			mBricks[i]->draw
 			(
-				mPosition + (mBricksPosition[i] * Brick::getSize()) + mBricksPosition[i]
+				pBoard.getPosition()
+				+ (mPosition* Brick::getSize() + mPosition)
+				+ (mBricksPosition[i] * Brick::getSize())
+				+ mBricksPosition[i]
 			);
 		}
 	}
-}
 
+	void Piece::drawShadow(const Board& pBoard)
+	{
+		for(int i = 0; i < mBricks.size(); ++i)
+		{
+			mBricks[i]->drawShadow
+			(
+				pBoard.getPosition()
+				+ (mPosition* Brick::getSize() + mPosition)
+				+ (mBricksPosition[i] * Brick::getSize())
+				+ mBricksPosition[i]
+			);
+		}
+	}
+
+	void Piece::pasteToBoard(Board& pBoard)
+	{
+		Gorgon::LogRegister(std::string("Pasting to board..."));
+		for(int i = 0; i < mBricks.size(); ++i)
+		{
+			Gorgon::LogRegister(std::string("I: %d\n"),i);
+			Gorgon::LogRegister(std::string("X: %f , Y: %f \n"),(mPosition + mBricksPosition[i]).getX(),(mPosition + mBricksPosition[i]).getY());
+			(mPosition + mBricksPosition[i]).getY();
+			pBoard.setBrick
+			(
+				mPosition + mBricksPosition[i],
+				mBricks[i]
+			);
+		}
+		mBricks.clear();
+		Gorgon::LogRegister(std::string("Done."));
+	}
+}
 

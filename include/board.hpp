@@ -3,12 +3,13 @@
 #include <vector>
 #include "brick.hpp"
 #include "brick_types.hpp"
-#include "gorgon++/src/geometry/include/gorgon_point.hpp"
+#include "score.hpp"
+#include <gorgon++/include/geometry/gorgon_point.hpp>
 namespace Tetris
 {
 	/**
 	 * Classe que representa o tabuleiro
-	 * 
+	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	13/08/2009
 	 * @version	13/08/2009
@@ -32,10 +33,18 @@ namespace Tetris
 			 * Posição do tabuleiro na tela
 			 */
 			Gorgon::Point mPosition;
+			/**
+			 * Score do tabuleiro
+			 */
+			Score mScore;
+			/**
+			 * Nível de dificuldade do tabuleiro
+			 */
+			int mLevel;
 		protected:
 			/**
 			 * Método para limpar os valores de uma linha
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
@@ -45,17 +54,17 @@ namespace Tetris
 		public:
 			/**
 			 * Método Construtor
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
 			 * @details
 			 * 			Ao criar o tabuleiro, o mesmo é preenchido com tijolos vazios
-			 */ 
-			Board();
+			 */
+			Board(const int& pLevel = 1);
 			/**
 			 * Método para retornar o número de tijolos que o tabuleiro comporta na horizontal
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
@@ -64,7 +73,7 @@ namespace Tetris
 			static int getWidth();
 			/**
 			 * Método para retornar o número de tijolos que o tabuleiro comporta na vertical
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
@@ -72,8 +81,12 @@ namespace Tetris
 			 */
 			static int getHeight();
 			/**
+			 * Método para retornar o nível de dificuldade do tabuleiro
+			 */
+			int getLevel() const;
+			/**
 			 * Método que remove uma linha de tijolos do tabuleiro
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
@@ -85,12 +98,59 @@ namespace Tetris
 			void removeRow(const int& pRow);
 			/**
 			 * Método para desenhar o tabuleiro e seus tijolos
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
 			 */
 			void draw() const;
+			/**
+			 * Método para retornar a posição do tabuleiro
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/08/2009
+			 * @version	18/08/2009
+			 * @return	Gorgon::Point
+			 */
+			Gorgon::Point getPosition() const;
+			/**
+			 * Método para colocar um tijolo no tabuleiro
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	17/08/2009
+			 * @version	17/08/2009
+			 * @param	const Gorgon::Point& pPosition, posição a adicionar o tijolo
+			 * @param	Brick* pBrick, ponteiro para o tijolo
+			 */
+			void setBrick(const Gorgon::Point& pPosition,Brick* pBrick);
+			/**
+			 * Método para retornar o tijolo de uma determinação posição do tabuleiro
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	17/08/2009
+			 * @version	17/08/2009
+			 * @param	const Gorgon::Point& pPosition, posição a recuperar o tijolo
+			 * @return	Brick&
+			 */
+			Brick& getBrick(const Gorgon::Point& pPoint) const;
+			/**
+			 * Método para checar se determinada linha está completa
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/08/2009
+			 * @version	18/08/2009
+			 * @param	const int& pRow, linha a ser testada
+			 * @return	bool
+			 */
+			bool checkCompletedRow(const int pRow) const;
+			/**
+			 * Método que executa a lógica do tabuleiro
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	18/08/2009
+			 * @version	18/08/2009
+			 */
+			void logic();
 	};
 }
 #endif

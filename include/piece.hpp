@@ -7,20 +7,20 @@ namespace Tetris
 {
 	/**
 	 * Classe que representa uma peça
-	 * 
+	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	13/08/2009
-	 * @version	13/08/2009
+	 * @version	17/08/2009
 	 */
 	class Piece
 	{
 		private:
 			/**
-			 * Variável que guarda os tijolos que compõem esse arranjo 
+			 * Variável que guarda os tijolos que compõem esse arranjo
 			 */
 			std::vector< Brick* > mBricks;
 			/**
-			 * Variável que guarda as posições dos tijolos que compõem esse arranjo 
+			 * Variável que guarda as posições dos tijolos que compõem esse arranjo
 			 */
 			std::vector< Gorgon::Point > mBricksPosition;
 			/**
@@ -30,7 +30,7 @@ namespace Tetris
 		protected:
 			/**
 			 * Método para se adicionar um tijolo à peça
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
@@ -57,35 +57,52 @@ namespace Tetris
 			 */
 			Gorgon::Point getPosition() const;
 			/**
-			 * Método para rotacionar a peça
-			 * 
+			 * Método para retornar o número de tijolos da peça
+			 *
 			 * @author	Cantidio Oliveira Fontes
-			 * @since	13/08/2009
-			 * @version	13/08/2009
+			 * @since	18/08/2009
+			 * @version	18/08/2009
+			 * @return	int
 			 */
-			virtual void rotate();
+			int getBrickNumber() const;
 			/**
-			 * Método que representa o input da peça
-			 * 
+			 * Método para setar a posição da peça
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	17/08/2009
+			 * @version	17/08/2009
+			 * @param	const Gorgon::Point& pPosition, posição da peça
+			 */
+			void setPosition(const Gorgon::Point& pPosition);
+			/**
+			 * Método para rotacionar a peça para direita
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	17/08/2009
+			 * @version	17/08/2009
+			 */
+			virtual void rotateRight();
+			/**
+			 * Método para rotacionar a peça para esquerda
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
-			 * @todo	verificar as colisões antes de mover a peça, olhar os casos de UP e DOWN
 			 */
-			virtual void control();
+			virtual void rotateLeft();
 			/**
 			 * Método que retorna verdadeiro se a peça colidiu
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
 			 * @return	bool
 			 * @todo	implementar
 			 */
-			bool colide();
+			bool colide(const Board& pBoard);
 			/**
 			 * Método para mover a peça
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
@@ -94,12 +111,30 @@ namespace Tetris
 			void move(const Gorgon::Point& pPoint);
 			/**
 			 * Método para desenhar a Peça
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
 			 */
-			void draw();
+			void draw(const Board& pBoard);
+			/**
+			 * Método para desenhar a sombra da peça
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	17/08/2009
+			 * @version	17/08/2009
+			 * @param	const Board& pBoard, tabuleiro
+			 */
+			void drawShadow(const Board& pBoard);
+			/**
+			 * Método que passa a peça para o tabuleiro
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	17/08/2009
+			 * @version	17/08/2009
+			 * @param	Board& pBoard, tabuleiro
+			 */
+			void pasteToBoard(Board& pBoard);
 	};
 }
 #endif

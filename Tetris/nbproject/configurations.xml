@@ -8,6 +8,7 @@
       <itemPath>/home/cantidio/Development/tetris/include/brick_empty.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/brick_types.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece.hpp</itemPath>
+      <itemPath>/home/cantidio/Development/tetris/include/piece_handler.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece_i.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece_j.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece_l.hpp</itemPath>
@@ -17,6 +18,7 @@
       <itemPath>/home/cantidio/Development/tetris/include/piece_types.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece_u.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece_z.hpp</itemPath>
+      <itemPath>/home/cantidio/Development/tetris/include/score.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="src" displayName="src" projectFiles="true">
       <itemPath>/home/cantidio/Development/tetris/src/board.cpp</itemPath>
@@ -25,6 +27,7 @@
       <itemPath>/home/cantidio/Development/tetris/src/brick_empty.cpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/src/game.cpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/src/piece.cpp</itemPath>
+      <itemPath>/home/cantidio/Development/tetris/src/piece_handler.cpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/src/piece_i.cpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/src/piece_j.cpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/src/piece_l.cpp</itemPath>
@@ -33,6 +36,7 @@
       <itemPath>/home/cantidio/Development/tetris/include/piece_t.cpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece_u.cpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece_z.cpp</itemPath>
+      <itemPath>/home/cantidio/Development/tetris/src/score.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Arquivos importantes"
@@ -94,6 +98,9 @@
       <item path="/home/cantidio/Development/tetris/include/piece.hpp">
         <itemTool>3</itemTool>
       </item>
+      <item path="/home/cantidio/Development/tetris/include/piece_handler.hpp">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/cantidio/Development/tetris/include/piece_i.hpp">
         <itemTool>3</itemTool>
       </item>
@@ -133,6 +140,9 @@
       <item path="/home/cantidio/Development/tetris/include/piece_z.hpp">
         <itemTool>3</itemTool>
       </item>
+      <item path="/home/cantidio/Development/tetris/include/score.hpp">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/cantidio/Development/tetris/src/board.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -151,6 +161,9 @@
       <item path="/home/cantidio/Development/tetris/src/piece.cpp">
         <itemTool>1</itemTool>
       </item>
+      <item path="/home/cantidio/Development/tetris/src/piece_handler.cpp">
+        <itemTool>1</itemTool>
+      </item>
       <item path="/home/cantidio/Development/tetris/src/piece_i.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -161,6 +174,9 @@
         <itemTool>1</itemTool>
       </item>
       <item path="/home/cantidio/Development/tetris/src/piece_o.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/cantidio/Development/tetris/src/score.cpp">
         <itemTool>1</itemTool>
       </item>
     </conf>
@@ -203,6 +219,9 @@
       <item path="/home/cantidio/Development/tetris/include/piece.hpp">
         <itemTool>3</itemTool>
       </item>
+      <item path="/home/cantidio/Development/tetris/include/piece_handler.hpp">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/cantidio/Development/tetris/include/piece_i.hpp">
         <itemTool>3</itemTool>
       </item>
@@ -242,6 +261,9 @@
       <item path="/home/cantidio/Development/tetris/include/piece_z.hpp">
         <itemTool>3</itemTool>
       </item>
+      <item path="/home/cantidio/Development/tetris/include/score.hpp">
+        <itemTool>3</itemTool>
+      </item>
       <item path="/home/cantidio/Development/tetris/src/board.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -260,6 +282,9 @@
       <item path="/home/cantidio/Development/tetris/src/piece.cpp">
         <itemTool>1</itemTool>
       </item>
+      <item path="/home/cantidio/Development/tetris/src/piece_handler.cpp">
+        <itemTool>1</itemTool>
+      </item>
       <item path="/home/cantidio/Development/tetris/src/piece_i.cpp">
         <itemTool>1</itemTool>
       </item>
@@ -270,6 +295,9 @@
         <itemTool>1</itemTool>
       </item>
       <item path="/home/cantidio/Development/tetris/src/piece_o.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="/home/cantidio/Development/tetris/src/score.cpp">
         <itemTool>1</itemTool>
       </item>
     </conf>

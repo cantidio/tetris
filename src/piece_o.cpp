@@ -10,7 +10,11 @@ namespace Tetris
 		appendBrick(new BrickColored(COLOR_YELLOW),Gorgon::Point(1,1));
 	}
 
-	void PieceO::rotate()
+	void PieceO::rotateRight()
+	{
+	}
+
+	void PieceO::rotateLeft()
 	{
 	}
 }

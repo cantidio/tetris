@@ -7,7 +7,7 @@ namespace Tetris
 {
 	/**
 	 * Classe que representa a peça I
-	 * 
+	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	13/08/2009
 	 * @version	13/08/2009
@@ -21,7 +21,7 @@ namespace Tetris
 		public:
 			/**
 			 * Método Construtor
-			 * 
+			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009

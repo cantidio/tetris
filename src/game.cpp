@@ -1,53 +1,68 @@
-
-#include "tetris/include/piece.hpp"
-
+#include <iostream>
+#include <allegro.h>
+#include <gorgon++/include/graphic/gorgon_video.hpp>
 #include "../include/board.hpp"
 #include "../include/piece_types.hpp"
-#include <allegro.h>
-#include "gorgon++/src/graphic/include/gorgon_video.hpp"
+#include "../include/piece_handler.hpp"
 
+int velocity	= 0;
+int timer		= 0;
+void game_time()
+{
+	++velocity;
+	++timer;
+}
+END_OF_FUNCTION(game_time);
 using namespace Tetris;
 int main()
 {
 	Board a;
-	PieceI b;
-	PieceJ c;
-	PieceL d;
-	PieceO e;
-	PieceS f;
-	PieceT g;
-	
-	PieceZ i;
+	PieceHandler handler;
+
 	allegro_init();
 	install_keyboard();
+	LOCK_VARIABLE(velocity);
+	LOCK_VARIABLE(timer);
+	LOCK_FUNCTION(game_time);
+	install_int_ex(game_time, BPS_TO_TIMER(60));
 	Gorgon::Video::init("Tetris");
 
-	//b.move(Gorgon::Point(0,18));
-
-	c.move(Gorgon::Point(1,20));
-	d.rotate(); d.rotate(); d.rotate();
-	d.move(Gorgon::Point(0,17));
-	e.move(Gorgon::Point(2,19));
-	f.move(Gorgon::Point(4,19)); f.rotate();
-	g.move(Gorgon::Point(4,20));
-	
-	i.move(Gorgon::Point(2,18)); i.rotate();
+	int merda = 60;
 	while(!key[KEY_ESC])
 	{
-		Gorgon::Video::get().clear();
-		
-		a.draw();
-		b.control();
-		b.draw();
-		c.draw();
-		d.draw();
-		f.draw();
-		g.draw();
-		i.draw();
-		e.draw();
+		while(timer >= 0 && !key[KEY_ESC])
+		{
+			Gorgon::Video::get().clear();
 
-		Gorgon::Video::get().show();
-		rest(1000);
+			handler.control(a);
+			if(key[KEY_Y])
+			{
+				merda-=5;//aumenta a velocidade
+				key[KEY_Y]=0;
+			}
+			if
+			(
+				velocity >= ( 60 - (a.getLevel() * 5) )
+			)
+			{
+				handler.moveDown(a);
+				velocity = 0;
+//				printf("\a");
+				std::cout << std::flush;
+			}
+			a.logic();
+			a.draw();
+
+			handler.drawCurrentPiece(a);
+			Gorgon::Video::get().show();
+			--timer;
+
+			key[KEY_A]		= 0;
+			key[KEY_D]		= 0;
+			key[KEY_UP]		= 0;
+			key[KEY_DOWN]	= 0;
+//			key[KEY_LEFT]	= 0;
+//			key[KEY_RIGHT]	= 0;
+		}
 	}
-
 }

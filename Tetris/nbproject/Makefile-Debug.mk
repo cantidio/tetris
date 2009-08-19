@@ -35,8 +35,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_j.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/game.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_l.o \
+	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/score.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_o.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/board.o \
+	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_handler.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/brick_colored.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_s.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_z.o \
@@ -101,6 +103,11 @@ ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_l.o: /home/cantidio
 	${RM} $@.d
 	$(COMPILE.cc) -g -I/home/cantidio/Development -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_l.o /home/cantidio/Development/tetris/src/piece_l.cpp
 
+${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/score.o: /home/cantidio/Development/tetris/src/score.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/home/cantidio/Development -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/score.o /home/cantidio/Development/tetris/src/score.cpp
+
 ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_o.o: /home/cantidio/Development/tetris/src/piece_o.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
 	${RM} $@.d
@@ -110,6 +117,11 @@ ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/board.o: /home/cantidio/D
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -I/home/cantidio/Development -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/board.o /home/cantidio/Development/tetris/src/board.cpp
+
+${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_handler.o: /home/cantidio/Development/tetris/src/piece_handler.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/home/cantidio/Development -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_handler.o /home/cantidio/Development/tetris/src/piece_handler.cpp
 
 ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/brick_colored.o: /home/cantidio/Development/tetris/src/brick_colored.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
