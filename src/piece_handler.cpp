@@ -4,7 +4,7 @@
 
 namespace Tetris
 {
-	int PieceHandler::mPiecesNumber = 2;
+	int PieceHandler::mPiecesNumber = 3;
 	PieceHandler::PieceHandler()
 	{
 		for(int i = 0; i<mPiecesNumber; ++i)
@@ -73,6 +73,20 @@ namespace Tetris
 			}
 			piece->move(Gorgon::Point(0,-1));
 			piece->drawShadow(pBoard);
+			piece->setPosition(temp);
+		}
+	}
+
+	void PieceHandler::drawNextPieces(const Board& pBoard)
+	{
+		Gorgon::Point temp;
+		Piece* piece;
+		for(int i = 1; i < mPiecesNumber; ++i)
+		{
+			piece	= mPieces[i];
+			temp	= piece->getPosition();
+			piece->setPosition(Gorgon::Point(pBoard.getWidth()+1,8+i*4));
+			piece->draw(pBoard);
 			piece->setPosition(temp);
 		}
 	}

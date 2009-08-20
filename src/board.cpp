@@ -22,9 +22,10 @@ namespace Tetris
 		}
 	}
 
-	Board::Board(const int& pLevel)
+	Board::Board(const Gorgon::Point& pPosition, const int& pLevel)
 	{
-		mLevel = pLevel;
+		mLevel		= pLevel;
+		mPosition	= pPosition;
 		for(int y = 0; y < mHeight; ++y)
 		{
 			mBricks.push_back( std::vector< Brick* >() );
@@ -63,8 +64,49 @@ namespace Tetris
 		fillRow(0);
 	}
 
+	void Board::drawBorders() const
+	{
+		Gorgon::Video::get().drawRectangle
+		(
+			mPosition - Gorgon::Point(Brick::getSize()+1,0),
+			Gorgon::Rectangle(Brick::getSize(),getHeight()*Brick::getSize() + getHeight()),
+			Gorgon::Color(250,200,200),
+			true
+		);
+		Gorgon::Video::get().drawRectangle
+		(
+			mPosition + Gorgon::Point(getWidth()*Brick::getSize()+getWidth(),0),
+			Gorgon::Rectangle(Brick::getSize(),getHeight()*Brick::getSize() + getHeight()),
+			Gorgon::Color(250,200,200),
+			true
+		);
+		Gorgon::Video::get().drawRectangle
+		(
+			mPosition + Gorgon::Point(-1-Brick::getSize(),getHeight()*Brick::getSize()+getHeight()),
+			Gorgon::Rectangle((getWidth()+2)*Brick::getSize()+1+getWidth(),Brick::getSize()),
+			Gorgon::Color(250,200,200),
+			true
+		);
+	}
+
+	void Board::drawinfoTable() const
+	{
+		mScore.draw( mPosition + Gorgon::Point(Brick::getSize()*(mWidth + 1)+mWidth + 1,+ Brick::getSize()*9) );
+		Gorgon::Video::get().drawText
+		(
+			mPosition.getX() + Brick::getSize() * (mWidth + 1) + mWidth + 1,
+			mPosition.getY() + Brick::getSize() * 10,
+			0xFFFFFF,
+			-1,
+			"Level: %d",
+			mLevel
+		);
+	}
+
 	void Board::draw() const
 	{
+		Gorgon::Point space();
+
 		for( int y = 0; y < mHeight; ++y )
 		{
 			for( int x = 0; x < mWidth; ++x )
@@ -79,8 +121,8 @@ namespace Tetris
 				);
 			}
 		}
-		mScore.draw( mPosition + Gorgon::Point(20,0) );
-		Gorgon::Video::get().drawText(0,10,0xFF0000,-1,"Level: %d",mLevel);
+		drawBorders();
+		drawinfoTable();
 	}
 
 	Gorgon::Point Board::getPosition() const
@@ -118,6 +160,19 @@ namespace Tetris
 			}
 		}
 		return true;
+	}
+
+	bool Board::checkEndGame() const
+	{
+
+		for(register Gorgon::Point position(0,0); position.getX() < mWidth; position.addX(1))
+		{
+			if(getBrick(position).isCollisional())
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	void Board::logic()

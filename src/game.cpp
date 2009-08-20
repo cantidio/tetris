@@ -1,3 +1,6 @@
+
+#include <stdlib.h>
+
 #include <iostream>
 #include <allegro.h>
 #include <gorgon++/gorgon.hpp>
@@ -32,18 +35,17 @@ int main()
 	{
 		while(timer >= 0 && !key[KEY_ESC])
 		{
-			Gorgon::Video::get().clear();
-
 			handler.control(a);
-			if(key[KEY_Y])
+			if(key[KEY_P])
 			{
-				merda-=5;//aumenta a velocidade
-				key[KEY_Y]=0;
+				key[KEY_P]=0;
+				Gorgon::Video::get().drawText("Pause",140,110,0xFF0000);
+				Gorgon::Video::get().show();
+				while(!key[KEY_P]);
+				key[KEY_P]=0;
 			}
-			if
-			(
-				velocity >= ( 60 - (a.getLevel() * 4) )
-			)
+			Gorgon::Video::get().clear();
+			if(	velocity >= ( 60 - (a.getLevel() * 3) )	)
 			{
 				handler.moveDown(a);
 				velocity = 0;
@@ -59,11 +61,18 @@ int main()
 			a.logic();
 			a.draw();
 
+			if(a.checkEndGame())
+			{
+				Gorgon::Video::get().drawText("Game Over",120,110,0xFF0000);
+				Gorgon::Video::get().show();
+				sleep(2);
+				return 0;
+			}
+
 			handler.drawCurrentPiece(a);
+			handler.drawNextPieces(a);
 			Gorgon::Video::get().show();
 			--timer;
-
-			
 		}
 	}
 }

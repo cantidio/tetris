@@ -7,6 +7,7 @@
       <itemPath>/home/cantidio/Development/tetris/include/brick_colored.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/brick_empty.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/brick_types.hpp</itemPath>
+      <itemPath>/home/cantidio/Development/tetris/include/game_mode.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece_handler.hpp</itemPath>
       <itemPath>/home/cantidio/Development/tetris/include/piece_i.hpp</itemPath>
@@ -93,6 +94,9 @@
         <itemTool>3</itemTool>
       </item>
       <item path="/home/cantidio/Development/tetris/include/brick_types.hpp">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/cantidio/Development/tetris/include/game_mode.hpp">
         <itemTool>3</itemTool>
       </item>
       <item path="/home/cantidio/Development/tetris/include/piece.hpp">
@@ -214,6 +218,9 @@
         <itemTool>3</itemTool>
       </item>
       <item path="/home/cantidio/Development/tetris/include/brick_types.hpp">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/home/cantidio/Development/tetris/include/game_mode.hpp">
         <itemTool>3</itemTool>
       </item>
       <item path="/home/cantidio/Development/tetris/include/piece.hpp">

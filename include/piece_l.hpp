@@ -10,7 +10,7 @@ namespace Tetris
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	13/08/2009
-	 * @version	13/08/2009
+	 * @version	20/08/2009
 	 * @details
 	 * 			          +---+
 	 * 			          |   |
@@ -27,7 +27,7 @@ namespace Tetris
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
-			 * @version	13/08/2009
+			 * @version	20/08/2009
 			 */
 			PieceL();
 	};

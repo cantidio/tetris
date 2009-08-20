@@ -67,6 +67,7 @@ namespace Tetris
 			 * @param	const Board& pBoard, tabuleiro
 			 */
 			void drawCurrentPiece(const Board& pBoard);
+			void drawNextPieces(const Board& pBoard);
 			/**
 			 * Método para destruir a peça atual e inserir uma nova no buffer
 			 *
@@ -75,9 +76,24 @@ namespace Tetris
 			 * @version	17/08/2009
 			 */
 			void destroyCurrentPiece();
+			/**
+			 * Método para rotacionar a peça para esquerda
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/08/2009
+			 * @version	20/08/2009
+			 * @param	Board& pBoard , tabuleiro onde a peá está
+			 */
 			void rotateLeft(Board& pBoard);
+			/**
+			 * Método para rotacionar a peça para direita
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/08/2009
+			 * @version	20/08/2009
+			 * @param	Board& pBoard , tabuleiro onde a peá está
+			 */
 			void rotateRight(Board& pBoard);
-
 			/**
 			 * Método para mover a peça para baixo de uma vez
 			 *
@@ -96,7 +112,23 @@ namespace Tetris
 			 * @param	Board& pBoard, tabuleiro
 			 */
 			void moveDown(Board& pBoard);
+			/**
+			 * Método para mover a peça para esquerda
+			 *
+			 * @author	Cantídio Oliveira Fontes
+			 * @since	17/08/2009
+			 * @version	17/08/2009
+			 * @param	Board& pBoard, tabuleiro
+			 */
 			void moveLeft(Board& pBoard);
+			/**
+			 * Método para mover a peça para direita
+			 *
+			 * @author	Cantídio Oliveira Fontes
+			 * @since	17/08/2009
+			 * @version	17/08/2009
+			 * @param	Board& pBoard, tabuleiro
+			 */
 			void moveRight(Board& pBoard);
 	};
 }

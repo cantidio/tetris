@@ -13,7 +13,7 @@ namespace Tetris
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	13/08/2009
-	 * @version	19/08/2009
+	 * @version	20/08/2009
 	 */
 	class Board
 	{
@@ -71,7 +71,7 @@ namespace Tetris
 			 * @details
 			 * 			Ao criar o tabuleiro, o mesmo é preenchido com tijolos vazios
 			 */
-			Board(const int& pLevel = 1);
+			Board(const Gorgon::Point& pPosition = Gorgon::Point(100,0),const int& pLevel = 1);
 			/**
 			 * Método para retornar o número de tijolos que o tabuleiro comporta na horizontal
 			 *
@@ -111,6 +111,22 @@ namespace Tetris
 			 * descem ocupando o espaço antes ocupado pelos tijolos removidos
 			 */
 			void removeRow(const int& pRow);
+			/**
+			 * Método para desenhar as bordas do tabuleiro
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/08/2009
+			 * @version	20/08/2009
+			 */
+			void drawBorders() const;
+			/**
+			 * Método para desenhar a tabela de informações
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	20/08/2009
+			 * @version	20/08/2009
+			 */
+			void drawinfoTable() const;
 			/**
 			 * Método para desenhar o tabuleiro e seus tijolos
 			 *
@@ -159,6 +175,7 @@ namespace Tetris
 			 * @return	bool
 			 */
 			bool checkCompletedRow(const int pRow) const;
+			bool checkEndGame() const;
 			/**
 			 * Método que executa a lógica do tabuleiro
 			 *
