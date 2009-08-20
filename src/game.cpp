@@ -1,6 +1,6 @@
 #include <iostream>
 #include <allegro.h>
-#include <gorgon++/include/graphic/gorgon_video.hpp>
+#include <gorgon++/gorgon.hpp>
 #include "../include/board.hpp"
 #include "../include/piece_types.hpp"
 #include "../include/piece_handler.hpp"
@@ -25,7 +25,7 @@ int main()
 	LOCK_VARIABLE(timer);
 	LOCK_FUNCTION(game_time);
 	install_int_ex(game_time, BPS_TO_TIMER(60));
-	Gorgon::Video::init("Tetris");
+	Gorgon::Video::init("Gorguix");
 
 	int merda = 60;
 	while(!key[KEY_ESC])
@@ -42,14 +42,20 @@ int main()
 			}
 			if
 			(
-				velocity >= ( 60 - (a.getLevel() * 5) )
+				velocity >= ( 60 - (a.getLevel() * 4) )
 			)
 			{
 				handler.moveDown(a);
 				velocity = 0;
-//				printf("\a");
-				std::cout << std::flush;
 			}
+
+			key[KEY_A]		= 0;
+			key[KEY_D]		= 0;
+			key[KEY_UP]		= 0;
+			key[KEY_DOWN]	= 0;
+			key[KEY_LEFT]	= 0;
+			key[KEY_RIGHT]	= 0;
+
 			a.logic();
 			a.draw();
 
@@ -57,12 +63,7 @@ int main()
 			Gorgon::Video::get().show();
 			--timer;
 
-			key[KEY_A]		= 0;
-			key[KEY_D]		= 0;
-			key[KEY_UP]		= 0;
-			key[KEY_DOWN]	= 0;
-//			key[KEY_LEFT]	= 0;
-//			key[KEY_RIGHT]	= 0;
+			
 		}
 	}
 }

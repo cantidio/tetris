@@ -1,5 +1,5 @@
 #include "../include/piece_handler.hpp"
-#include <gorgon++/include/core/gorgon_log.hpp>
+#include <gorgon++/gorgon.hpp>
 #include <allegro.h>
 
 namespace Tetris
@@ -22,7 +22,15 @@ namespace Tetris
 	}
 	void PieceHandler::control(Board& pBoard)
 	{
-		Gorgon::LogRegister(std::string("Control init..."));
+		//Gorgon::LogRegister(std::string("Control init..."));
+		if(key[KEY_LEFT])
+		{
+			moveLeft(pBoard);
+		}
+		else if(key[KEY_RIGHT])
+		{
+			moveRight(pBoard);
+		}
 		if(key[KEY_A])
 		{
 			rotateLeft(pBoard);
@@ -39,15 +47,7 @@ namespace Tetris
 		{
 			moveDown(pBoard);
 		}
-		else if(key[KEY_LEFT])
-		{
-			moveLeft(pBoard);
-		}
-		else if(key[KEY_RIGHT])
-		{
-			moveRight(pBoard);
-		}
-		Gorgon::LogRegister(std::string("Done."));
+		//Gorgon::LogRegister(std::string("Done."));
 	}
 	
 	Piece* PieceHandler::getCurrentPiece() const
@@ -80,6 +80,7 @@ namespace Tetris
 	void PieceHandler::destroyCurrentPiece()
 	{
 		//Gorgon::LogRegister(std::string("Destroy piece..."));
+		delete mPieces[0];
 		mPieces.erase(mPieces.begin());
 		//Gorgon::LogRegister(std::string("Done."));
 		//Gorgon::LogRegister(std::string("Put new piece in buffer..."));
@@ -167,15 +168,15 @@ namespace Tetris
 		//Gorgon::LogRegister(std::string("test Current piece collision..."));
 		if(piece->colide(pBoard))
 		{
-			Gorgon::LogRegister(std::string("move Current piece back."));
+			//Gorgon::LogRegister(std::string("move Current piece back."));
 			piece->move(Gorgon::Point(0,-1));
-			Gorgon::LogRegister(std::string("Done."));
-			Gorgon::LogRegister(std::string("paste Current piece to board..."));
+			//Gorgon::LogRegister(std::string("Done."));
+			//Gorgon::LogRegister(std::string("paste Current piece to board..."));
 			piece->pasteToBoard(pBoard);
-			Gorgon::LogRegister(std::string("Done."));
-			Gorgon::LogRegister(std::string("destroying Current piece..."));
+			//Gorgon::LogRegister(std::string("Done."));
+			//Gorgon::LogRegister(std::string("destroying Current piece..."));
 			destroyCurrentPiece();
-			Gorgon::LogRegister(std::string("Done."));
+			//Gorgon::LogRegister(std::string("Done."));
 		}
 		//Gorgon::LogRegister(std::string("Done."));
 	}

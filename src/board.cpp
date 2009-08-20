@@ -10,6 +10,14 @@ namespace Tetris
 		for(int x = 0; x < mWidth; ++x)
 		{
 			delete mBricks[pRow][x];
+			mBricks[pRow][x] = NULL;
+		}
+	}
+
+	void Board::fillRow(const int& pRow)
+	{
+		for(int x = 0; x < mWidth; ++x)
+		{
 			mBricks[pRow][x] = new BrickEmpty();
 		}
 	}
@@ -44,14 +52,15 @@ namespace Tetris
 
 	void Board::removeRow(const int& pRow)
 	{
-		for(int y = pRow; y > 1; --y)
+		eraseRow(pRow);
+		for(int y = pRow; y > 0; --y)
 		{
 			for(int x = 0; x < mWidth; ++x)
 			{
 				mBricks[y][x] = mBricks[y - 1][x];
 			}
 		}
-		eraseRow(0);
+		fillRow(0);
 	}
 
 	void Board::draw() const
@@ -79,14 +88,17 @@ namespace Tetris
 		return mPosition;
 	}
 
-	void Board::setBrick(const Gorgon::Point& pPosition,Brick* pBrick)
+	void Board::setBrick(const Gorgon::Point& pPosition,Brick** pBrick)
 	{
-		//printf("setBrick. x: %f y: %f\n",pPosition.getX(),pPosition.getY());
+		//Gorgon::LogRegister(std::string("setBrick. x: %f y: %f..."),pPosition.getX(),pPosition.getY());
 		if(mBricks[pPosition.getY()][pPosition.getX()])
 		{
 			delete mBricks[pPosition.getY()][pPosition.getX()];
+			//mBricks[pPosition.getY()][pPosition.getX()] = NULL;
 		}
-		mBricks[pPosition.getY()][pPosition.getX()] = pBrick;
+		mBricks[pPosition.getY()][pPosition.getX()] = *pBrick;
+		*pBrick = NULL;
+		//Gorgon::LogRegister(std::string("Done."),pPosition.getX(),pPosition.getY());
 	}
 
 	Brick& Board::getBrick(const Gorgon::Point& pPosition) const
@@ -111,7 +123,7 @@ namespace Tetris
 	void Board::logic()
 	{
 		int pontos = 0;
-		for(int row = mHeight-1; row > -1; --row)
+		for(int row = mHeight-1; row >= 0; --row)
 		{
 			if(checkCompletedRow(row))
 			{

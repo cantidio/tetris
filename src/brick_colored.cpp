@@ -1,5 +1,5 @@
 #include "../include/brick_colored.hpp"
-#include <gorgon++/include/graphic/gorgon_video.hpp>
+#include <gorgon++/gorgon.hpp>
 
 namespace Tetris
 {

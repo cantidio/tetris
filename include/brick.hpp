@@ -1,6 +1,6 @@
 #ifndef _BRICK_
 #define _BRICK_
-#include <gorgon++/include/geometry/gorgon_point.hpp>
+#include <gorgon++/gorgon.hpp>
 
 namespace Tetris
 {

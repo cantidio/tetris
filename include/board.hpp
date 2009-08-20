@@ -4,7 +4,8 @@
 #include "brick.hpp"
 #include "brick_types.hpp"
 #include "score.hpp"
-#include <gorgon++/include/geometry/gorgon_point.hpp>
+#include <gorgon++/gorgon.hpp>
+
 namespace Tetris
 {
 	/**
@@ -12,7 +13,7 @@ namespace Tetris
 	 *
 	 * @author	Cantidio Oliveira Fontes
 	 * @since	13/08/2009
-	 * @version	13/08/2009
+	 * @version	19/08/2009
 	 */
 	class Board
 	{
@@ -47,10 +48,19 @@ namespace Tetris
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
-			 * @version	13/08/2009
+			 * @version	19/08/2009
 			 * @param	const int& pRow , linha a ser limpa
 			 */
 			void eraseRow(const int& pRow);
+			/**
+			 * Método para preencher uma linha com blocos vazios
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	19/08/2009
+			 * @version	19/08/2009
+			 * @param	const int& pRow, linha a ser preenchida
+			 */
+			void fillRow(const int& pRow);
 		public:
 			/**
 			 * Método Construtor
@@ -82,6 +92,11 @@ namespace Tetris
 			static int getHeight();
 			/**
 			 * Método para retornar o nível de dificuldade do tabuleiro
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @since	19/08/2009
+			 * @version	19/08/2009
+			 * @return	int
 			 */
 			int getLevel() const;
 			/**
@@ -118,11 +133,12 @@ namespace Tetris
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	17/08/2009
-			 * @version	17/08/2009
+			 * @version	19/08/2009
 			 * @param	const Gorgon::Point& pPosition, posição a adicionar o tijolo
-			 * @param	Brick* pBrick, ponteiro para o tijolo
+			 * @param	Brick** pBrick, ponteiro de ponteiro para o tijolo
+			 * @todo	talvez passar ponteiro normal mesmo
 			 */
-			void setBrick(const Gorgon::Point& pPosition,Brick* pBrick);
+			void setBrick(const Gorgon::Point& pPosition,Brick** pBrick);
 			/**
 			 * Método para retornar o tijolo de uma determinação posição do tabuleiro
 			 *
@@ -138,7 +154,7 @@ namespace Tetris
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	18/08/2009
-			 * @version	18/08/2009
+			 * @version	19/08/2009
 			 * @param	const int& pRow, linha a ser testada
 			 * @return	bool
 			 */
@@ -148,7 +164,7 @@ namespace Tetris
 			 *
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	18/08/2009
-			 * @version	18/08/2009
+			 * @version	19/08/2009
 			 */
 			void logic();
 	};

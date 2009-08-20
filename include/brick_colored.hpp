@@ -1,7 +1,7 @@
 #ifndef _BRICK_COLORED_
 #define _BRICK_COLORED_
 #include "brick.hpp"
-#include <gorgon++/include/graphic/gorgon_color.hpp>
+#include <gorgon++/gorgon.hpp>
 
 namespace Tetris
 {

@@ -30,9 +30,10 @@ OBJECTDIR=build/Release/${PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_i.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/brick_empty.o \
+	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_z.o \
+	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_j.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/brick.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece.o \
-	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_j.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/game.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_l.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/score.o \
@@ -40,10 +41,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/board.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_handler.o \
 	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/brick_colored.o \
-	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_s.o \
-	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_z.o \
-	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_u.o \
-	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_t.o
+	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_u.o \
+	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_s.o \
+	${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_t.o
 
 # C Compiler Flags
 CFLAGS=
@@ -76,6 +76,16 @@ ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/brick_empty.o: /home/cant
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/brick_empty.o /home/cantidio/Development/tetris/src/brick_empty.cpp
 
+${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_z.o: /home/cantidio/Development/tetris/src/piece_z.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_z.o /home/cantidio/Development/tetris/src/piece_z.cpp
+
+${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_j.o: /home/cantidio/Development/tetris/src/piece_j.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_j.o /home/cantidio/Development/tetris/src/piece_j.cpp
+
 ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/brick.o: /home/cantidio/Development/tetris/src/brick.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
 	${RM} $@.d
@@ -85,11 +95,6 @@ ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece.o: /home/cantidio/D
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece.o /home/cantidio/Development/tetris/src/piece.cpp
-
-${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_j.o: /home/cantidio/Development/tetris/src/piece_j.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_j.o /home/cantidio/Development/tetris/src/piece_j.cpp
 
 ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/game.o: /home/cantidio/Development/tetris/src/game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
@@ -126,25 +131,20 @@ ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/brick_colored.o: /home/ca
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/brick_colored.o /home/cantidio/Development/tetris/src/brick_colored.cpp
 
-${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_s.o: /home/cantidio/Development/tetris/include/piece_s.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include
+${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_u.o: /home/cantidio/Development/tetris/src/piece_u.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_s.o /home/cantidio/Development/tetris/include/piece_s.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_u.o /home/cantidio/Development/tetris/src/piece_u.cpp
 
-${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_z.o: /home/cantidio/Development/tetris/include/piece_z.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include
+${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_s.o: /home/cantidio/Development/tetris/src/piece_s.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_z.o /home/cantidio/Development/tetris/include/piece_z.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_s.o /home/cantidio/Development/tetris/src/piece_s.cpp
 
-${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_u.o: /home/cantidio/Development/tetris/include/piece_u.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include
+${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_t.o: /home/cantidio/Development/tetris/src/piece_t.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_u.o /home/cantidio/Development/tetris/include/piece_u.cpp
-
-${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_t.o: /home/cantidio/Development/tetris/include/piece_t.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/include/piece_t.o /home/cantidio/Development/tetris/include/piece_t.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/cantidio/Development/tetris/src/piece_t.o /home/cantidio/Development/tetris/src/piece_t.cpp
 
 # Subprojects
 .build-subprojects:

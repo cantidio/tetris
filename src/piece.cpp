@@ -1,10 +1,17 @@
 #include <allegro.h>
-#include <gorgon++/include/core/gorgon_log.hpp>
+#include <gorgon++/gorgon.hpp>
 #include "../include/board.hpp"
 #include "../include/piece.hpp"
 
 namespace Tetris
 {
+	Piece::Piece(const Gorgon::Point& pPosition)
+	{
+		mPosition = pPosition;
+		mBricks.clear();
+		mBricksPosition.clear();
+	}
+
 	Piece::~Piece()
 	{
 		for(int i = 0; i < mBricks.size(); ++i)
@@ -79,7 +86,6 @@ namespace Tetris
 		for(int i = 0; i < mBricksPosition.size(); ++i)
 		{
 			Gorgon::Point temp = mPosition + mBricksPosition[i];
-			//printf("posicao do brick: %f %f\n",temp.getX(),temp.getY());
 			if
 			(
 				temp.getX()		< 0
@@ -142,20 +148,19 @@ namespace Tetris
 
 	void Piece::pasteToBoard(Board& pBoard)
 	{
-		Gorgon::LogRegister(std::string("Pasting to board..."));
+		//Gorgon::LogRegister(std::string("Pasting to board..."));
 		for(int i = 0; i < mBricks.size(); ++i)
 		{
-			Gorgon::LogRegister(std::string("I: %d\n"),i);
-			Gorgon::LogRegister(std::string("X: %f , Y: %f \n"),(mPosition + mBricksPosition[i]).getX(),(mPosition + mBricksPosition[i]).getY());
-			(mPosition + mBricksPosition[i]).getY();
+			//Gorgon::LogRegister(std::string("I: %d X: %f , Y: %f"),i,(mPosition + mBricksPosition[i]).getX(),(mPosition + mBricksPosition[i]).getY());
+
 			pBoard.setBrick
 			(
 				mPosition + mBricksPosition[i],
-				mBricks[i]
+				&mBricks[i]
 			);
+			mBricks[i] = NULL;
 		}
-		mBricks.clear();
-		Gorgon::LogRegister(std::string("Done."));
+		//Gorgon::LogRegister(std::string("Done."));
 	}
 }
 

@@ -1,6 +1,7 @@
 #ifndef _PIECE_
 #define _PIECE_
 #include "brick_types.hpp"
+#include "board.hpp"
 #include <vector>
 
 namespace Tetris
@@ -34,11 +35,20 @@ namespace Tetris
 			 * @author	Cantidio Oliveira Fontes
 			 * @since	13/08/2009
 			 * @version	13/08/2009
-			 * @param	Brick* pBrick					, tijolo a ser adicionado à peça
+			 * @param	const Brick& pBrick				, tijolo a ser adicionado à peça
 			 * @param	const Gorgon::Point& pPosition	, posição do tijolo
 			 */
 			void appendBrick(Brick* pBrick,const Gorgon::Point& pPosition);
 		public:
+			/**
+			 * Método Construtor
+			 *
+			 * @author	Cantidio Oliveira Fontes
+			 * @sicne	19/08/2009
+			 * @version	19/08/2009
+			 * @param	const Gorgon::Point& pPosition , posição de spaw da peça
+			 */
+			Piece(const Gorgon::Point& pPosition = Gorgon::Point(Board::getWidth()/2 - 1,0));
 			/**
 			 * Método Destrutor
 			 *

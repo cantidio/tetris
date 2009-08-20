@@ -1,7 +1,6 @@
 #ifndef _SCORE_
 #define	_SCORE_
-#include <gorgon++/include/geometry/gorgon_point.hpp>
-#include <gorgon++/include/graphic/gorgon_video.hpp>
+#include <gorgon++/gorgon.hpp>
 
 namespace Tetris
 {
