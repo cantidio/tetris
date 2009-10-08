@@ -188,7 +188,7 @@ namespace Tetris
 				++row;
 			}
 		}
-		if(pontos > 1) mScore += pontos*10;
+		if(pontos > 1) mScore += pontos*pontos*10;
 		if(mScore.getValue() > 0 && (mScore.getValue() / (mLevel*100)) >= 1)
 		{
 			++mLevel;
