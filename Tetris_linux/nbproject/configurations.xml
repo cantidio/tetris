@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="62">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="include" displayName="include" projectFiles="true">
+      <itemPath>../include/board.hpp</itemPath>
+      <itemPath>../include/brick.hpp</itemPath>
+      <itemPath>../include/brick_colored.hpp</itemPath>
+      <itemPath>../include/brick_empty.hpp</itemPath>
+      <itemPath>../include/brick_types.hpp</itemPath>
+      <itemPath>../include/game_mode.hpp</itemPath>
+      <itemPath>../include/piece.hpp</itemPath>
+      <itemPath>../include/piece_handler.hpp</itemPath>
+      <itemPath>../include/piece_i.hpp</itemPath>
+      <itemPath>../include/piece_j.hpp</itemPath>
+      <itemPath>../include/piece_l.hpp</itemPath>
+      <itemPath>../include/piece_o.hpp</itemPath>
+      <itemPath>../include/piece_s.hpp</itemPath>
+      <itemPath>../include/piece_t.hpp</itemPath>
+      <itemPath>../include/piece_types.hpp</itemPath>
+      <itemPath>../include/piece_u.hpp</itemPath>
+      <itemPath>../include/piece_z.hpp</itemPath>
+      <itemPath>../include/score.hpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="src" displayName="src" projectFiles="true">
+      <itemPath>../src/board.cpp</itemPath>
+      <itemPath>../src/brick.cpp</itemPath>
+      <itemPath>../src/brick_colored.cpp</itemPath>
+      <itemPath>../src/brick_empty.cpp</itemPath>
+      <itemPath>../src/game.cpp</itemPath>
+      <itemPath>../src/piece.cpp</itemPath>
+      <itemPath>../src/piece_handler.cpp</itemPath>
+      <itemPath>../src/piece_i.cpp</itemPath>
+      <itemPath>../src/piece_j.cpp</itemPath>
+      <itemPath>../src/piece_l.cpp</itemPath>
+      <itemPath>../src/piece_o.cpp</itemPath>
+      <itemPath>../src/piece_s.cpp</itemPath>
+      <itemPath>../src/piece_t.cpp</itemPath>
+      <itemPath>../src/piece_u.cpp</itemPath>
+      <itemPath>../src/piece_z.cpp</itemPath>
+      <itemPath>../src/score.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Arquivos importantes"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>/home/cantidio/Development/tetris/include</Elem>
+    <Elem>/home/cantidio/Development/tetris/src</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>/home/cantidio/Development</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>`allegro-config --libs`</linkerOptionItem>
+            <linkerOptionItem>`gorgon-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <linkerTool>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>

@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Tetris
+PROJECTNAME=Tetris_linux
 
 # Active Configuration
 DEFAULTCONF=Debug

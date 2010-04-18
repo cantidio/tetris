@@ -6,12 +6,14 @@
 
 # Macros
 TOP=`pwd`
-PLATFORM=GNU-Linux-x86
-TMPDIR=build/Debug/${PLATFORM}/tmp-packaging
+CND_PLATFORM=GNU-Linux-x86
+CND_CONF=Release
+CND_DISTDIR=dist
+TMPDIR=build/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/Debug/${PLATFORM}/tetris
-OUTPUT_BASENAME=tetris
-PACKAGE_TOP_DIR=tetris/
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tetris_linux
+OUTPUT_BASENAME=tetris_linux
+PACKAGE_TOP_DIR=tetrislinux/
 
 # Functions
 function checkReturnCode
@@ -50,21 +52,21 @@ function copyFileToTmpDir
 
 # Setup
 cd "${TOP}"
-mkdir -p dist/Debug/${PLATFORM}/package
+mkdir -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package
 rm -rf ${TMPDIR}
 mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/tetris/bin
+makeDirectory ${TMPDIR}/tetrislinux/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f dist/Debug/${PLATFORM}/package/tetris.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/tetrislinux.tar
 cd ${TMPDIR}
-tar -vcf ../../../../dist/Debug/${PLATFORM}/package/tetris.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/tetrislinux.tar *
 checkReturnCode
 
 # Cleanup
